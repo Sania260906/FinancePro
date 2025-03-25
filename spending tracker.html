@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spending Pie Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('top-view-desk-concept-with-notepad.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed; /* Stops animation effect */
+            color: white;
+        }
+
+        #navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(204, 172, 10, 0.7);
+            transition: background 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        #navbar .op {
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #navbar.scrolled {
+            background: black;
+        }
+
+        #navbar.scrolled .op {
+            color: white;
+        }
+
+        .inner-box {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav_options {
+            display: flex;
+            gap: 20px;
+        }
+        .op a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .op a:hover {
+            background: #00c3ff;
+            color: black;
+        }
+
+        .op {
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 40%;
+            margin: 100px auto 20px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        input {
+            width: 60%;
+        }
+
+        button {
+            cursor: pointer;
+            background: #00c3ff;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #0099cc;
+        }
+
+        .clear-btn {
+            background: red;
+            color: white;
+        }
+
+        .clear-btn:hover {
+            background: darkred;
+        }
+
+        #chart-container {
+    width: 40%; /* Reduce size */
+    max-width: 500px; /* Set a max width to avoid flickering */
+    margin: auto;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+canvas {
+    width: 80% !important;  /* Prevent resizing flickers */
+    height: 400px !important; /* Maintain consistent height */
+}
+
+
+        @media (max-width: 992px) {
+            .inner-box {
+                width: 100%;
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav_options {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav_options {
+                display: none;
+            }
+
+            .content-box {
+                width: 80%;
+            }
+
+            #chart-container {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container-fluid" id="navbar">
+        <div class="inner-box container">
+            <div class="name">FinancePro</div>
+            <div class="nav_options">
+                <div class="op"><a href="homepage.html" class="text-white text-decoration-none">About</a></div>
+                <div class="op"><a href="homepage.html" class="text-white text-decoration-none">Features</a></div>
+                <div class="op"><a href="homepage.html" class="text-white text-decoration-none">Contact</a></div>
+                <div class="op"><a href="signup.html" class="text-white text-decoration-none">Sign Up</a></div>
+                <div class="op"><a href="login.html" class="text-white text-decoration-none">Sign In</a></div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div class="content-box">
+        <h2>Spending Tracker</h2>
+        <label>Category: </label>
+        <input type="text" id="category" placeholder="e.g., Food, Rent, Transport"><br>
+        <label>Amount: </label>
+        <input type="number" id="amount" placeholder="Enter amount"><br>
+        <button onclick="addData()">Add</button>
+        <button onclick="clearChart()" class="clear-btn">Clear Chart</button>
+    </div>
+
+    <div id="chart-container">
+        <canvas id="spendingChart"></canvas>
+    </div>
+
+    <script>
+        window.addEventListener("scroll", function () {
+            let navbar = document.getElementById("navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+
+        const ctx = document.getElementById('spendingChart').getContext('2d');
+        let categories = [];
+        let amounts = [];
+
+        const spendingChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: categories,
+                datasets: [{
+                    data: amounts,
+                    backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33F3', '#33FFF3']
+                }]
+            }
+        });
+
+        function addData() {
+            let category = document.getElementById('category').value;
+            let amount = document.getElementById('amount').value;
+
+            if (category && amount) {
+                categories.push(category);
+                amounts.push(parseFloat(amount));
+
+                spendingChart.data.labels = categories;
+                spendingChart.data.datasets[0].data = amounts;
+                spendingChart.update();
+
+                document.getElementById('category').value = '';
+                document.getElementById('amount').value = '';
+            }
+        }
+
+        function clearChart() {
+            categories.length = 0;
+            amounts.length = 0;
+
+            spendingChart.data.labels = [];
+            spendingChart.data.datasets[0].data = [];
+            spendingChart.update();
+        }
+    </script>
+
+</body>
+</html>

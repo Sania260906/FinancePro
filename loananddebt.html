@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan & Debt Management</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('yellowbitcoin.jpg') no-repeat center center/cover;
+            color: black;
+        }
+
+        #navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background:rgb(186, 165, 7);
+            transition: background 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        
+        #navbar .op {
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+
+     
+        #navbar.scrolled {
+            background: black;
+        }
+
+        
+        #navbar.scrolled .op {
+            color: white;
+        }
+
+       
+        .inner-box {
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            margin-left: 60px;
+        }
+
+        .nav_options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .op {
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .op a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .op a:hover {
+            background: #00c3ff;
+            color: black;
+        }
+       
+@media (max-width: 992px) {
+    .inner-box {
+        width: 100%;
+        padding: 0 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav_options {
+        display: none;
+    }
+
+   
+}
+
+@media (max-width: 768px) {
+    .nav_options {
+        display: none; 
+    }
+
+    .menu-toggle {
+        display: block;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    .nav_options.show {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+        .hero {
+            padding: 100px 20px;
+            background: rgba(255, 193, 7, 0.7);
+            margin-top: 60px;
+        }
+
+        .services {
+            padding: 50px 20px;
+            background: #FFEB3B;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        .service-card {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+        }
+
+        .testimonials {
+            padding: 50px 20px;
+        }
+
+        .testimonial {
+            background: white;
+            color: black;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px auto;
+            width: 60%;
+        }
+
+        .cta {
+            padding: 40px;
+            background: #FF9800;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 180px;
+            text-align: center;
+            padding: 12px 0;
+            background: black;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: #FFC107;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <nav class="container-fluid" id="navbar">
+        <div class="inner-box container">
+            <div class="name">FinancePro</div>
+            <div class="nav_options">
+                <div class="op"><a href="#homepage.html" class="text-white text-decoration-none">About</a></div>
+                <div class="op"><a href="#homepage.html" class="text-white text-decoration-none">Features</a></div>
+                <div class="op"><a href="#homepage.html" class="text-white text-decoration-none">Contact</a></div>
+                <div class="op"><a href="#signup.html" class="text-white text-decoration-none">Sign Up</a></div>
+                <div class="op"><a href="#loginin.html" class="text-white text-decoration-none">Sign In</a></div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="hero">
+        <h2>Take Control of Your Finances</h2>
+        <p>Manage your loans, reduce your debt, and plan for a stable financial future.</p>
+    </div>
+
+    <div id="services" class="services">
+        <h2>Our Services</h2>
+        <div class="service-card">
+            <h3>📉 Debt Reduction</h3>
+            <p>Learn strategies to reduce and manage your debt effectively.</p>
+        </div>
+        <div class="service-card">
+            <h3>💰 Loan Management</h3>
+            <p>Find the best repayment plans and optimize your loan payments.</p>
+        </div>
+        <div class="service-card">
+            <h3>📊 Financial Planning</h3>
+            <p>Create a budget and long-term plan to secure your financial future.</p>
+        </div>
+    </div>
+
+    <div id="testimonials" class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial">
+            <p>"This platform helped me get out of debt and take control of my finances! Highly recommended!" - Alex D.</p>
+        </div>
+        <div class="testimonial">
+            <p>"I learned so much about loan management and budgeting. Life-changing experience!" - Sarah P.</p>
+        </div>
+    </div>
+
+    <div class="cta">
+        <h2>Start Your Journey to Financial Freedom</h2>
+        <a href="savingsAndInvestmentGuide.html" class="btn">Get Started</a>
+    </div>
+    <script>
+    
+        window.addEventListener("scroll", function () {
+            let navbar = document.getElementById("navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+});
+</script>
+</body>
+</html>

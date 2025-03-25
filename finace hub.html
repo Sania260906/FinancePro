@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Education Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('pngtree-flat-wind-business-finance-growth-financial-poster-background-picture-image_1085012.jpg') no-repeat center center/cover;
+            color: white;
+        }
+
+        #navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(236, 137, 31, 0.7);
+            transition: background 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        #navbar .op {
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #navbar.scrolled {
+            background: black;
+        }
+
+        #navbar.scrolled .op {
+            color: white;
+        }
+
+        .inner-box {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav_options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .op {
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .op a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .op a:hover {
+            background: #00c3ff;
+            color: black;
+        }
+        @media (max-width: 992px) {
+            .inner-box {
+                width: 100%;
+                padding: 0 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav_options {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav_options {
+                display: none;
+            }
+
+            .content-box {
+                width: 80%;
+            }
+
+            #chart-container {
+                width: 80%;
+            }
+        }
+        #education-hub {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 80px 40px 40px;
+            margin: 120px auto 40px;
+            width: 80%;
+            border-radius: 10px;
+        }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .education-card:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            display: inline-block;
+            width: 180px;
+            text-align: center;
+            padding: 12px 0;
+            background: linear-gradient(90deg, #00c3ff, #0073ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(90deg, #0073ff, #00c3ff);
+        }
+
+        .cta-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .education-card {
+                width: 80%;
+            }
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container-fluid" id="navbar">
+        <div class="inner-box container">
+            <div class="name">FinancePro</div>
+            <div class="nav_options">
+                <div class="op"><a href="#homepage.html" class="text-white text-decoration-none">About</a></div>
+                <div class="op"><a href="#homepage.html" class="text-white text-decoration-none">Features</a></div>
+                <div class="op"><a href="#homepage.html" class="text-white text-decoration-none">Contact</a></div>
+                <div class="op"><a href="#signup.html" class="text-white text-decoration-none">Sign Up</a></div>
+                <div class="op"><a href="#loginin.html" class="text-white text-decoration-none">Sign In</a></div>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+    <div id="education-hub">
+        <h2>Financial Education Hub</h2>
+
+        <div class="education-card">
+            <h3>💰 Budgeting 101</h3>
+            <p>Learn how to plan your income and expenses effectively.</p>
+        </div>
+
+        <div class="education-card">
+            <h3>📈 Smart Investing</h3>
+            <p>Understand stocks, bonds, and mutual funds.</p>
+        </div>
+
+        <div class="education-card">
+            <h3>🔐 Security & Fraud Prevention</h3>
+            <p>Protect yourself from financial scams.</p>
+        </div>
+
+        <div class="cta-section">
+            <h3>Ready to Take Control of Your Finances?</h3>
+            <a href="securityAndFraudAwareness.html" class="btn">Start Learning</a>
+        </div>
+
+        <a href="spending tracker.html" class="btn">Back to Tracker</a>
+    </div>
+        <script>
+    
+            window.addEventListener("scroll", function () {
+                let navbar = document.getElementById("navbar");
+                if (window.scrollY > 50) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            });
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
